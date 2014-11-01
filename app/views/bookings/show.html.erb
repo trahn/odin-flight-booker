@@ -1,0 +1,14 @@
+<h1>Your Booking</h1>
+<h2>Your Flight</h2>
+<%= render partial: 'shared/flight', object: @booking.flight %>
+
+<h2>Passengers</h2>
+<% if @booking.passengers.any? %>
+  <ol>
+  	<% @booking.passengers.each do |passenger| %>
+  	  <%= render partial: 'passenger', object: passenger %>
+  	<% end %>
+  </ol>
+<% else %>
+  None.
+<% end %>

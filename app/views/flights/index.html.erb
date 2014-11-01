@@ -1,0 +1,33 @@
+<h1>Odin Flight Booker</h1>
+
+<h2>Search</h2>
+<%= form_for @flight, method: 'get' do |f| %>
+  From: <%= select(:flight, :start_id, @codes) %>
+  To: <%= select(:flight, :finish_id, @codes) %></br>
+
+  Date: <%= select(:flight, :takeoff, @dates, selected: @flight.takeoff.to_date) %></br>
+
+  No of Passengers: <%= select_tag(:no_pax, options_for_select(@no_pax, @pax)) %></br>
+
+  <%= f.submit "Search" %>
+
+
+<% end %>
+
+<% if @flights %>
+  <h2>Results</h2>
+
+  <% if @flights.any? %>
+    <%= form_for @booking, method: 'get',
+        url: new_booking_url do |f| %>
+      <%= hidden_field_tag(:pax, @pax) %>
+
+      <ul><table><%= render @flights %></table></ul>
+
+      <%= f.submit "Continue booking" %>
+    <% end %>
+  <% else %>
+    No results.
+  <% end %>
+
+<% end %>

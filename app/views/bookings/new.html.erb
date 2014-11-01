@@ -1,0 +1,21 @@
+<h1>Booking</h1>
+<h2>Flight</h2>
+<%= render partial: 'shared/flight', object: @flight %></br>
+Flight ID: <%= @flight.id %>
+
+<h2>Passengers</h2>
+<%= form_for @booking do |f| %>
+
+  <%= f.hidden_field(:flight_id) %>
+  <%= f.hidden_field(:pax) %>
+  
+  <%= f.fields_for :passengers do |p| %>
+    <h3>Passenger <%= p.index + 1 %></h3>
+	Name: <%= p.text_field :name %></br>
+	Email: <%= p.text_field :email %>
+  <% end %>
+  </br>
+
+  <%= f.submit "Confirm Booking" %>
+
+<% end %>
