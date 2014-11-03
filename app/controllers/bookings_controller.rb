@@ -11,9 +11,16 @@ class BookingsController < ApplicationController
     #   @booking.passengers.create(values)
     # end
     render 'show'
+    send_mails(@booking)
   end
 
   def show
+  end
+
+  def send_mails(booking)
+    booking.passengers.each do |p|
+      PassengerMailer.flight_confirmation_email(p, booking.flight).deliver
+    end
   end
 
   private

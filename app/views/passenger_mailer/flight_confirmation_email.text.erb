@@ -1,0 +1,13 @@
+Dear <%= @passenger.name.titleize %>
+
+Congratulations on booking the following flight:
+
+From: <%= @flight.from_airport.code %> 
+To: <%= @flight.to_airport.code %>
+Date: <%= @flight.takeoff.to_date %>
+Time: <%= @flight.takeoff.strftime("%I:%M %p") %>
+Duration: <%= @flight.duration.strftime("%H:%M") %>
+
+We wish you a happy flight.
+
+Your Odin-Flight-Booker-Team

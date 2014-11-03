@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+	<h3>Dear <%= @passenger.name.titleize %></h3>
+
+	<p>Congratulations on booking the following flight:</p></br>
+
+	<%= render partial: 'shared/flight', object: @flight %></br>
+
+	<p>We wish you a happy flight.</p></br>
+
+	<p>Your Odin-Flight-Booker-Team</p>
+  </body>
+</html>
